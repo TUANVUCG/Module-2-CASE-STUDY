@@ -64,7 +64,7 @@ public class Teacher extends Person {
     public void inputTeacherInfo(List<Teacher> teacherList) {
         super.inputPersonInfo();
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập mã sinh viên (ví dụ TC1234) : ");
+        System.out.print("Nhập mã giảng viên (ví dụ TC1234) : ");
         while (true) {
             teacherId = sc.nextLine();
             boolean isFind = false;
@@ -88,7 +88,7 @@ public class Teacher extends Person {
         }
 
         System.out.print("Nhập tên lớp dạy ");
-        System.out.println("Tên lớp bắt đầu bằng chữ C, tiếp theo là 4 chữ số và kết thúc bằng G,H,I hoặc K");
+        System.out.println("Bắt đầu bằng chữ C, tiếp theo là 4 chữ số và kết thúc bằng G,H,I hoặc K");
         while (true) {
             className = sc.nextLine();
             String regex = "^C\\d{4}[GHIK]";
@@ -114,7 +114,7 @@ public class Teacher extends Person {
     }
 
     public void showTeacherInfo() {
-        System.out.println(this.toString());
+        System.out.println(toString());
     }
 
     @Override

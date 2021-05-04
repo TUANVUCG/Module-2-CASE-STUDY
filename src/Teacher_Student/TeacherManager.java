@@ -28,7 +28,7 @@ public class TeacherManager {
         Collections.sort(teacherList, new Comparator<Teacher>() {
             @Override
             public int compare(Teacher o1, Teacher o2) {
-                if (o1.findSalary() > o2.findSalary()) {
+                if (o1.findSalary() < o2.findSalary()) {
                     return 1;
                 }
                 return -1;
@@ -112,7 +112,7 @@ public class TeacherManager {
 
 
     // Đọc thông tin giảng viên
-    public List<Teacher> readTeacherInfo() {
+    public void readTeacherInfo() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
@@ -139,6 +139,5 @@ public class TeacherManager {
                 }
             }
         }
-        return teacherList;
     }
 }
