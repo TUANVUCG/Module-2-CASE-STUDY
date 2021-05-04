@@ -58,16 +58,12 @@ public class Main {
                     System.out.println("Nhập mã giảng viên cần sửa : ");
                     String editId = sc.nextLine();
                     teacherManager.editTeacherByID(editId);
-                    System.out.println("Danh sách sau khi sửa : ");
-                    teacherManager.showAllTeacherInfo();
                     break;
                 case "4":
                     // Xóa thông tin giảng viên theo mã giảng viên
                     System.out.println("Nhập mã giảng viên cần xóa : ");
                     String removeId = sc.nextLine();
                     teacherManager.removeTeacherByID(removeId);
-                    System.out.println("Danh sách sau khi xóa : ");
-                    teacherManager.showAllTeacherInfo();
                     break;
                 case "5":
                     // Sắp xếp giảng viên theo lương giảm dần
@@ -99,7 +95,6 @@ public class Main {
         }while (!(choose.equals("0")));
     }
 
-
     private static void wokStudentInfo(StudentManager studentManager) {
         String choose;
         System.out.println("Nhập lựa chọn của bạn ");
@@ -117,8 +112,7 @@ public class Main {
                     // Sửa
                     System.out.println("Nhập mã sinh viên hoặc tên sinh viên cần sửa : "); // done
                     String inputEdit = sc.nextLine();
-                    studentManager.editStudentByNameOrId(inputEdit);
-                    System.out.println("Danh sách sau khi sửa : ");
+                    studentManager.editStudentByNameOrId(inputEdit);System.out.println("Danh sách sau khi sửa : ");
                     studentManager.showAllStudent();
                     break;
                 case "4":
@@ -169,6 +163,7 @@ public class Main {
             }
         } while (!(choose.equals("0")));
     }
+
     private static void showTeacherMenu() {
         System.out.println("-------------------------");
         System.out.println("1. Thêm giảng viên mới");

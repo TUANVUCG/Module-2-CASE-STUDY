@@ -70,6 +70,8 @@ public class TeacherManager {
         int index = findTeacherById(id);
         if (index != -1) {
             teacherList.get(index).inputTeacherInfo(teacherList);
+            System.out.println("Danh sách sau khi sửa : ");
+            showAllTeacherInfo();
         }
     }
 
@@ -78,6 +80,8 @@ public class TeacherManager {
         int index = findTeacherById(id);
         if (index != -1) {
             teacherList.remove(index);
+            System.out.println("Danh sách sau khi xóa : ");
+            showAllTeacherInfo();
         }
     }
 
