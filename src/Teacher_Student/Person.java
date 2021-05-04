@@ -2,6 +2,8 @@ package Teacher_Student;
 
 import java.io.Serializable;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Person implements Serializable {
     private String name;
@@ -51,27 +53,46 @@ public class Person implements Serializable {
         this.address = address;
     }
 
-    public void inputPersonInfo(){
+    public void inputPersonInfo() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập tên : ");
         name = sc.nextLine();
 
         System.out.print("Nhập giới tính (Nam/nữ) : ");
-        gender = sc.nextLine();
+        while (true) {
+            gender = sc.nextLine();
+            if (gender.equalsIgnoreCase("nam") || gender.equalsIgnoreCase("nữ")) {
+                break;
+            } else {
+                System.err.println("Giới tính chỉ có thể là nam hoặc nữ");
+            }
+        }
+
 
         System.out.print("Nhập ngày sinh (dd/MM/yyyy): ");
-        birthOfDate = sc.nextLine();
+        while (true) {
+            birthOfDate = sc.nextLine();
+            String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(birthOfDate);
+            if (matcher.find()) {
+                break;
+            } else {
+                System.err.println("Nhập ngày sinh theo mẫu dd/MM/yyyy !!!");
+            }
+        }
 
         System.out.print("Nhập địa chỉ : ");
         address = sc.nextLine();
     }
 
-    public void showPersonInfo(){
+    public void showPersonInfo() {
         System.out.println(toString());
     }
 
     @Override
     public String toString() {
-        return "Tên: "+name+"\t"+"Giới tính: "+gender+"\t"+"Ngày sinh: "+birthOfDate+"\t"+"Địa chỉ: "+address+"\t";
+        return "Tên: " + name + "\t" + "Giới tính: " + gender + "\t" + "Ngày sinh: " + birthOfDate + "\t" + "Địa chỉ: " + address + "\t";
     }
 }
+

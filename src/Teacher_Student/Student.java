@@ -1,6 +1,9 @@
 package Teacher_Student;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Student extends Person{
     private String studentId;
@@ -69,23 +72,82 @@ public class Student extends Person{
         this.practiceMark = practiceMark;
     }
 
-    public void inputStudentInfo() {
+    public void inputStudentInfo(List<Student> studentList) {
         super.inputPersonInfo();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập mã sinh viên (ví dụ CG12345) : ");
-        studentId = sc.nextLine();
+        System.out.print("Nhập mã sinh viên (ví dụ CG1234) : ");
+        while (true){
+            studentId = sc.nextLine();
+            boolean isFind = false;
+            for(Student student : studentList){
+                if(student.getStudentId().equals(studentId)){
+                    isFind = true;
+                }
+            }
+            String regex = "^CG\\d{4}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(studentId);
+            if(matcher.find()) {
+                if(!isFind)
+                break;
+                else if(isFind){
+                    System.err.println("Mã sinh viên đã tồn tại !");
+                    continue;
+                }
+            }
+            System.err.println("Mã sinh viên không đúng");
+        }
 
-        System.out.println("Nhập email : ");
-        email = sc.nextLine();
+        System.out.print("Nhập email (ví dụ : abc@abc.abc) : ");
+        while (true) {
+            email = sc.nextLine();
+            // abc@abc.abc
+            String regex = "^[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+(\\.[a-zA-Z0-9]+)$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(email);
+            if(matcher.find()){
+                break;
+            }
+            else {
+                System.err.println("Email không đúng !!!");
+            }
+        }
 
-        System.out.println("Nhập số điện thoại : ");
-        phoneNumber = sc.nextLine();
+        System.out.print("Nhập số điện thoại ( số điện thoại gồm 10 hoặc 11 chữ số viết liền ) :  ");
+        while(true) {
+            phoneNumber = sc.nextLine();
+            String regex = "\\d{10,11}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(phoneNumber);
+            if(matcher.find()){
+                break;
+            }
+            else{
+                System.err.println("Số điện thoại không đúng !!!");
+            }
+        }
 
-        System.out.println("Nhập điểm lý thuyết : ");
-        theoryMark = Float.parseFloat(sc.nextLine());
+        System.out.print("Nhập điểm lý thuyết : ");
+        while(true) {
+            theoryMark = Float.parseFloat(sc.nextLine());
+            if(theoryMark>=0&&theoryMark<=10){
+                break;
+            }
+            else{
+                System.err.println("Điểm từ 0 đến 10 !");
+            }
+        }
 
-        System.out.println("Nhập điểm thực hành : ");
-        practiceMark = Float.parseFloat(sc.nextLine());
+        System.out.print("Nhập điểm thực hành : ");
+        while (true) {
+            practiceMark = Float.parseFloat(sc.nextLine());
+            if(practiceMark>=0&&practiceMark<=10){
+                break;
+            }
+            else {
+                System.err.println("Điểm từ 0 đến 10 !");
+            }
+        }
     }
 
     public void showStudentInfo(){

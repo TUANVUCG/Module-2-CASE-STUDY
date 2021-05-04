@@ -11,7 +11,7 @@ public class StudentManager {
     // Thêm sinh viên
     public void addStudent() {
         Student student = new Student();
-        student.inputStudentInfo();
+        student.inputStudentInfo(studentList);
         studentList.add(student);
     }
 
@@ -56,7 +56,7 @@ public class StudentManager {
         Collections.sort(studentList, new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
-                return o1.getName().compareToIgnoreCase(o2.getName());
+                return -o1.getName().compareToIgnoreCase(o2.getName());
             }
         });
     }
@@ -118,7 +118,7 @@ public class StudentManager {
     }
 
     // Đọc thông tin
-    public List<Student> read(String fileName, List<Student> studentList) {
+    public List<Student> read(String fileName) {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
@@ -157,7 +157,7 @@ public class StudentManager {
 
     // Đọc thông tin tất cả sinh viên
     public void readAllStudentInfo() {
-        read("Student.txt", studentList);
+        read("Student.txt");
     }
 
     // Lưu thông tin sinh viên được học bổng
@@ -168,8 +168,7 @@ public class StudentManager {
 
     // Đọc thông tin sinh viên được học bổng
     public void readStudentHasScholarShip() {
-        List<Student> studentHasScholarship = null;
-        read("ScholarShip.txt", studentHasScholarship);
+        List<Student> studentHasScholarship = read("ScholarShip.txt");;
         System.out.println("Danh sách sinh viên đạt học bổng");
         for (Student student : studentHasScholarship) {
             student.showStudentInfo();
@@ -203,7 +202,7 @@ public class StudentManager {
     public void editStudentByNameOrId(String input) {
         int index = findStudent(input);
         if (index != -1) {
-            studentList.get(index).inputStudentInfo();
+            studentList.get(index).inputStudentInfo(studentList);
         }
     }
 
