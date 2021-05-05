@@ -92,8 +92,7 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return ""+
-                "Tên: " + name + "\t" + "Giới tính: " + gender + "\t" + "Ngày sinh: " + birthOfDate + "\t" + "Địa chỉ: " + address + "\t";
+        return String.format("%-30s%-12s%-20s%-20s",name,gender,birthOfDate,address);
     }
 }
 

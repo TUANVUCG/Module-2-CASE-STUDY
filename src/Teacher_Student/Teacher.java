@@ -120,6 +120,7 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return super.toString() + "Mã giảng viên : "+teacherId+"\t"+"Tên lớp dạy: " + className + "\t" + "Lương một giờ dạy: " + salaryOneHour + "\t" + "Số giờ dạy trong tháng: " + hourOnMonth + "\t" + "Lương thực lĩnh: " + findSalary();
+        return super.toString() + String.format("%-20s%-20s%-15.1f%15.1f%20.1f",teacherId,className,salaryOneHour,hourOnMonth,findSalary());
+
     }
 }

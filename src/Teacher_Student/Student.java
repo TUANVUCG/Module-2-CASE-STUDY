@@ -9,13 +9,13 @@ public class Student extends Person{
     private String studentId;
     private String email;
     private String phoneNumber;
-    private float theoryMark;
-    private float practiceMark;
+    private double theoryMark;
+    private double practiceMark;
 
     public Student() {
     }
 
-    public Student(String studentId, String email, String phoneNumber, float theoryMark, float practiceMark) {
+    public Student(String studentId, String email, String phoneNumber, double theoryMark, double practiceMark) {
         this.studentId = studentId;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -23,7 +23,7 @@ public class Student extends Person{
         this.practiceMark = practiceMark;
     }
 
-    public Student(String name, String gender, String birthOfDate, String address, String studentId, String email, String phoneNumber, float theoryMark, float practiceMark) {
+    public Student(String name, String gender, String birthOfDate, String address, String studentId, String email, String phoneNumber, double theoryMark, double practiceMark) {
         super(name, gender, birthOfDate, address);
         this.studentId = studentId;
         this.email = email;
@@ -56,7 +56,7 @@ public class Student extends Person{
         this.phoneNumber = phoneNumber;
     }
 
-    public float getTheoryMark() {
+    public double getTheoryMark() {
         return theoryMark;
     }
 
@@ -64,7 +64,7 @@ public class Student extends Person{
         this.theoryMark = theoryMark;
     }
 
-    public float getPracticeMark() {
+    public double getPracticeMark() {
         return practiceMark;
     }
 
@@ -146,7 +146,7 @@ public class Student extends Person{
 
         System.out.print("Nhập điểm lý thuyết : ");
         while(true) {
-            theoryMark = Float.parseFloat(sc.nextLine());
+            theoryMark = Double.parseDouble(sc.nextLine());
             if(theoryMark>=0&&theoryMark<=10){
                 break;
             }
@@ -157,7 +157,7 @@ public class Student extends Person{
 
         System.out.print("Nhập điểm thực hành : ");
         while (true) {
-            practiceMark = Float.parseFloat(sc.nextLine());
+            practiceMark = Double.parseDouble(sc.nextLine());
             if(practiceMark>=0&&practiceMark<=10){
                 break;
             }
@@ -167,17 +167,18 @@ public class Student extends Person{
         }
     }
 
+
     public void showStudentInfo(){
         System.out.println(this.toString());
     }
 
-    public float findGPA(){
+    public double findGPA(){
         return (theoryMark + (practiceMark * 2)) / 3;
     }
 
     public boolean inspectScholarship(){
         boolean isPass = false;
-        float gpa = findGPA();
+        double gpa = findGPA();
         if(gpa>=8.0){
             if(theoryMark>=7&&practiceMark>=7){
                 isPass = true;
@@ -196,7 +197,6 @@ public class Student extends Person{
 
     @Override
     public String toString() {
-        return super.toString() + "Mã sinh viên: "+studentId+"\t"+"Email: "+email+"\t"+"Số điện thoại: "+phoneNumber+"\t"+
-                "Điểm lý thuyết: "+theoryMark+"\t"+"Điểm thực hành: "+practiceMark+"\t"+"Điểm trung bình: "+findGPA()+"\n";
+        return super.toString() + String.format("%-25s%-30s%-25s%-25.1f%-25.1f%-25.1f",studentId,email,phoneNumber,theoryMark,practiceMark,findGPA());
     }
 }

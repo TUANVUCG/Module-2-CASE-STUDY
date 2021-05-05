@@ -53,38 +53,45 @@ public class Main {
                     teacherManager.showAllTeacherInfo();
                     break;
                 case "3":
-                    // Sửa thông tin giảng viên theo mã giảng viên
-                    System.out.println("Nhập mã giảng viên cần sửa : ");
-                    String editId = sc.nextLine();
-                    teacherManager.editTeacherByID(editId);
+                    // Tìm kiếm giảng viên bằng tên hoặc mã giảng viên
+                    System.out.println("Nhập tên hoặc mã giảng viên cần tìm : ");
+                    String find = sc.nextLine();
+                    teacherManager.showTeacherByIdOrName(find);
                     break;
                 case "4":
-                    // Xóa thông tin giảng viên theo mã giảng viên
-                    System.out.println("Nhập mã giảng viên cần xóa : ");
-                    String removeId = sc.nextLine();
-                    teacherManager.removeTeacherByID(removeId);
+                    // Sửa thông tin giảng viên theo tên hoặc mã giảng viên
+                    System.out.println("Nhập tên hoặc mã giảng viên cần sửa : ");
+                    String edit = sc.nextLine();
+                    teacherManager.editTeacherByIdOrName(edit);
                     break;
                 case "5":
+                    // Xóa thông tin giảng viên theo tên hoặc mã giảng viên
+                    System.out.println("Nhập tên hoặc mã giảng viên cần xóa : ");
+                    String remove = sc.nextLine();
+                    teacherManager.removeTeacherByIdOrName(remove);
+                    teacherManager.saveTeacherInfo();
+                    break;
+                case "6":
                     // Sắp xếp giảng viên theo lương giảm dần
                     teacherManager.sortTeacherBySalary();
                     System.out.println("Danh sách sau sắp xếp : ");
                     teacherManager.showAllTeacherInfo();
                     break;
-                case "6":
+                case "7":
                     // Hiển thị giảng viên có lương cao nhất
                     System.out.println("Giảng viên có lương cao nhất : ");
                     teacherManager.showTeacherHighestSalary();
                     break;
-                case "7":
+                case "8":
                     // Lưu thông tin giảng viên
                     teacherManager.saveTeacherInfo();
                     break;
-                case "8":
+                case "9":
                     // Đọc thông tin giảng viên
                     teacherManager.readTeacherInfo();
                     teacherManager.showAllTeacherInfo();
                     break;
-                case "9":
+                case "10":
                     showBigMenu();
                     choice(studentManager,teacherManager );
                     break;
@@ -115,22 +122,23 @@ public class Main {
                 case "3":
                     // Sửa
                     System.out.println("Nhập mã sinh viên hoặc tên sinh viên cần sửa : "); // done
-                    String inputEdit = sc.nextLine();
-                    studentManager.editStudentByNameOrId(inputEdit);System.out.println("Danh sách sau khi sửa : ");
+                    String edit = sc.nextLine();
+                    studentManager.editStudentByNameOrId(edit);
+                    System.out.println("Danh sách sau khi sửa : ");
                     studentManager.showAllStudent();
                     break;
                 case "4":
                     // Xóa
                     System.out.println("Nhập mã sinh viên hoặc tên sinh viên cần xóa : ");
-                    String inputRemove = sc.nextLine();
-                    studentManager.removeStudentByNameOrId(inputRemove);
+                    String remove = sc.nextLine();
+                    studentManager.removeStudentByNameOrId(remove);
                     System.out.println("Danh sách sau khi xóa : ");
                     studentManager.showAllStudent();
                     break;
                 case "5":
                     System.out.print("Nhập tên hoặc mã sinh viên cần tìm : ");
-                    String nameFind = sc.nextLine();
-                    studentManager.showStudentByNameOrId(nameFind);
+                    String find = sc.nextLine();
+                    studentManager.showStudentByNameOrId(find);
                     break;
                 case "6":
                     studentManager.sortStudentByGPA(studentManager.studentList);// done
@@ -141,9 +149,8 @@ public class Main {
                     studentManager.showStudentMinAndMaxGPA();// done
                     break;
                 case "8":
-                    studentManager.sortStudentByName();// done
                     System.out.println("Danh sách sau khi sắp xếp");
-                    studentManager.showAllStudent();
+                    studentManager.showStudentByName();
                     break;
                 case "9":
                     studentManager.showStudentHasScholarshipByGPA();// done
@@ -177,13 +184,14 @@ public class Main {
         System.out.println("-------------------------");
         System.out.println("1. Thêm giảng viên mới");
         System.out.println("2. Hiển thị tất cả thông tin giảng viên");
-        System.out.println("3. Sửa thông tin giảng viên theo mã giảng viên ");
-        System.out.println("4. Xóa thông tin giảng viên theo mã giảng viên ");
-        System.out.println("5. Sắp xếp giảng viên theo lương giảm dần");
-        System.out.println("6. Hiển thị giảng viên có lương cao nhất");
-        System.out.println("7. Lưu thông tin giảng viên");
-        System.out.println("8. Đọc thông tin giảng viên");
-        System.out.println("9. Quay lại menu chính");
+        System.out.println("3. Tìm kiếm giảng viên theo tên hoặc mã giảng viên ");
+        System.out.println("4. Sửa thông tin giảng viên theo tên hoặc mã giảng viên ");
+        System.out.println("5. Xóa thông tin giảng viên theo tên hoặc mã giảng viên ");
+        System.out.println("6. Sắp xếp giảng viên theo lương giảm dần");
+        System.out.println("7. Hiển thị giảng viên có lương cao nhất");
+        System.out.println("8. Lưu thông tin giảng viên");
+        System.out.println("9. Đọc thông tin giảng viên");
+        System.out.println("10. Quay lại menu chính");
         System.out.println("0. Thoát chương trình");
     }
 

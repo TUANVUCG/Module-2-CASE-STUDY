@@ -17,9 +17,15 @@ public class StudentManager {
 
     // Hiển thị tất cả sinh viên
     public void showAllStudent() {
+        printTitle();
         for (Student student : studentList) {
             student.showStudentInfo();
         }
+    }
+
+    private void printTitle() {
+        System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s","Họ tên","Giới tính","Ngày sinh","Quê quán","Mã sinh viên","Email","Số điện thoại","Điểm lý thuyết","Điểm thực hành","Điểm trung bình");
+        System.out.println("\n");
     }
 
     // Sắp xếp sinh viên theo điểm trung bình từ thấp đến cao
@@ -45,8 +51,10 @@ public class StudentManager {
     public void showStudentMinAndMaxGPA() {
         sortStudentByGPA(studentList);
         System.out.println("Sinh viên có điểm trung bình cao nhất : ");
+        printTitle();
         studentList.get(studentList.size() - 1).showStudentInfo();
         System.out.println("Sinh viên có điểm trung bình thấp nhất : ");
+        printTitle();
         studentList.get(0).showStudentInfo();
     }
 
@@ -83,6 +91,7 @@ public class StudentManager {
     public void showStudentHasScholarshipByGPA() {
         List<Student> studentHasScholarshipList = findStudentHasScholarship();
         sortStudentByGPA(studentHasScholarshipList);
+        printTitle();
         for (Student student : studentHasScholarshipList) {
             student.showStudentInfo();
         }
@@ -193,6 +202,7 @@ public class StudentManager {
     public void showStudentByNameOrId(String input) {
         int index = findStudent(input);
         if (index != -1) {
+            printTitle();
             studentList.get(index).showStudentInfo();
         }
     }
@@ -201,7 +211,9 @@ public class StudentManager {
     public void editStudentByNameOrId(String input) {
         int index = findStudent(input);
         if (index != -1) {
-            studentList.get(index).inputStudentInfo(studentList);
+            Student student = new Student();
+            student.inputStudentInfo(studentList);
+            studentList.set(index, student);
         }
     }
 
