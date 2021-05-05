@@ -14,6 +14,7 @@ public class TeacherManager {
         Teacher teacher = new Teacher();
         teacher.inputTeacherInfo(teacherList);
         teacherList.add(teacher);
+        saveTeacherInfo();
     }
 
     // Hiển thị tất cả thông tin giảng viên

@@ -45,6 +45,7 @@ public class Main {
             switch (choose) {
                 case "1":
                     // Thêm giảng viên
+                    teacherManager.readTeacherInfo();
                     teacherManager.addTeacher();// done
                     break;
                 case "2":
@@ -97,13 +98,6 @@ public class Main {
         }while (!(choose.equals("0")));
     }
 
-    private static void showBigMenu() {
-        System.out.println("Bạn muốn làm việc với đối tượng nào ?");
-        System.out.println("1. Giảng viên");
-        System.out.println("2. Sinh viên");
-        System.out.println("0. Thoát chương trình ");
-    }
-
     private static void wokStudentInfo(StudentManager studentManager, TeacherManager teacherManager) {
         String choose;
         System.out.println("Nhập lựa chọn của bạn ");
@@ -112,6 +106,7 @@ public class Main {
             choose = sc.nextLine();
             switch (choose) {
                 case "1":
+                    studentManager.readAllStudentInfo();
                     studentManager.addStudent();// done
                     break;
                 case "2":
@@ -155,6 +150,7 @@ public class Main {
                     break;
                 case "10":
                     studentManager.saveAllStudentInfo();
+                    System.out.println("Đã lưu !");
                     break;
                 case "11":
                     studentManager.readAllStudentInfo();
@@ -208,5 +204,12 @@ public class Main {
         System.out.println("13. Quay lại menu chính");
         System.out.println("0. Thoát chương trình");
 
+    }
+
+    private static void showBigMenu() {
+        System.out.println("Bạn muốn làm việc với đối tượng nào ?");
+        System.out.println("1. Giảng viên");
+        System.out.println("2. Sinh viên");
+        System.out.println("0. Thoát chương trình ");
     }
 }

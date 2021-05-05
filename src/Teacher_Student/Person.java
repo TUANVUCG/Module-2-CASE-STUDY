@@ -92,7 +92,8 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "Tên: " + name + "\t" + "Giới tính: " + gender + "\t" + "Ngày sinh: " + birthOfDate + "\t" + "Địa chỉ: " + address + "\t";
+        return ""+
+                "Tên: " + name + "\t" + "Giới tính: " + gender + "\t" + "Ngày sinh: " + birthOfDate + "\t" + "Địa chỉ: " + address + "\t";
     }
 }
 

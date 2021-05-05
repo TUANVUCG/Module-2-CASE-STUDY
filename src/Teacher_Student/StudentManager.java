@@ -12,6 +12,7 @@ public class StudentManager {
         Student student = new Student();
         student.inputStudentInfo(studentList);
         studentList.add(student);
+        saveAllStudentInfo();
     }
 
     // Hiển thị tất cả sinh viên
@@ -151,7 +152,6 @@ public class StudentManager {
     public void saveAllStudentInfo() {
         save("Student.txt", studentList);
         saveStudentHasScholarShip();
-        System.out.println("Đã lưu !");
     }
 
     // Đọc thông tin tất cả sinh viên

@@ -90,8 +90,8 @@ public class Student extends Person{
             if(matcher.find()) {
                 if(!isFind)
                 break;
-                else if(isFind){
-                    System.err.println("Mã sinh viên đã tồn tại !");
+                else {
+                    System.err.println("Mã sinh viên này đã tồn tại !");
                     continue;
                 }
             }
@@ -101,30 +101,47 @@ public class Student extends Person{
         System.out.print("Nhập email (ví dụ : abc@abc.abc) : ");
         while (true) {
             email = sc.nextLine();
-            // abc@abc.abc
+            boolean isFind = false;
+            for(Student student : studentList){
+                if(student.getEmail().equals(email)){
+                    isFind = true;
+                }
+            }
             String regex = "^[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+(\\.[a-zA-Z0-9]+)$";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(email);
-            if(matcher.find()){
-                break;
+            if(matcher.find()) {
+                if(!isFind)
+                    break;
+                else {
+                    System.err.println("Email này đã được sử dụng, vui lòng nhập email khác !!!");
+                    continue;
+                }
             }
-            else {
-                System.err.println("Email không đúng !!!");
-            }
+            System.err.println("Email không đúng !!!");
         }
 
         System.out.print("Nhập số điện thoại ( số điện thoại gồm 10 hoặc 11 chữ số viết liền ) :  ");
         while(true) {
             phoneNumber = sc.nextLine();
+            boolean isFind = false;
+            for(Student student : studentList){
+                if(student.getPhoneNumber().equals(phoneNumber)){
+                    isFind = true;
+                }
+            }
             String regex = "\\d{10,11}$";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(phoneNumber);
-            if(matcher.find()){
-                break;
+            if(matcher.find()) {
+                if(!isFind)
+                    break;
+                else {
+                    System.err.println("Số điện thoại này đã được sử dụng, vui lòng nhập số điện thoại khác !");
+                    continue;
+                }
             }
-            else{
-                System.err.println("Số điện thoại không đúng !!!");
-            }
+            System.err.println("Số điện thoại không đúng !!!");
         }
 
         System.out.print("Nhập điểm lý thuyết : ");
