@@ -71,6 +71,7 @@ public class Teacher extends Person {
             for (Teacher teacher : teacherList) {
                 if (teacher.getTeacherId().equals(teacherId)) {
                     isFind = true;
+                    break;
                 }
             }
             String regex = "^TC\\d{4}$";
@@ -79,7 +80,7 @@ public class Teacher extends Person {
             if (matcher.find()) {
                 if (!isFind)
                     break;
-                else if (isFind) {
+                else {
                     System.err.println("Mã giảng viên đã tồn tại !");
                     continue;
                 }

@@ -8,29 +8,27 @@ public class Main {
     public static void main(String[] args) {
         StudentManager studentManager = new StudentManager();
         TeacherManager teacherManager = new TeacherManager();
-        showfirstMenu();
+        showFirstMenu();
         choice(studentManager, teacherManager);
 
     }
 
-    private static void showfirstMenu() {
-        System.out.println("Bạn muốn làm việc với nội dung nào ?");
-        System.out.println("1. Giảng viên");
-        System.out.println("2. Sinh viên");
-        System.out.println("0. Thoát chương trình ");
+    private static void showFirstMenu() {
+        showBigMenu();
     }
 
     private static void choice(StudentManager studentManager, TeacherManager teacherManager) {
 
         String choice = sc.nextLine();
         if(choice.equals("1")){
-            workTeacherInfo(teacherManager);
+            workTeacherInfo(teacherManager,studentManager);
         }
         if(choice.equals("2")){
-            wokStudentInfo(studentManager);
+            wokStudentInfo(studentManager,teacherManager);
         }
         if(choice.equals("0")){
             System.out.println("GOODBYE !");
+            System.exit(0);
             return;
         }
         if(!choice.equals("1")&&!choice.equals("2")&&!choice.equals("0")){
@@ -39,7 +37,7 @@ public class Main {
         }
     }
 
-    private static void workTeacherInfo(TeacherManager teacherManager) {
+    private static void workTeacherInfo(TeacherManager teacherManager, StudentManager studentManager) {
         String choose;
         do {
             showTeacherMenu();
@@ -85,17 +83,28 @@ public class Main {
                     teacherManager.readTeacherInfo();
                     teacherManager.showAllTeacherInfo();
                     break;
+                case "9":
+                    showBigMenu();
+                    choice(studentManager,teacherManager );
+                    break;
                 case "0":
                     System.out.println("GOODBYE !!!");
                     break;
                 default:
-                    System.err.println("Nhập sai !");
+                    System.err.println("Nhập sai !!!");
                     break;
             }
         }while (!(choose.equals("0")));
     }
 
-    private static void wokStudentInfo(StudentManager studentManager) {
+    private static void showBigMenu() {
+        System.out.println("Bạn muốn làm việc với đối tượng nào ?");
+        System.out.println("1. Giảng viên");
+        System.out.println("2. Sinh viên");
+        System.out.println("0. Thoát chương trình ");
+    }
+
+    private static void wokStudentInfo(StudentManager studentManager, TeacherManager teacherManager) {
         String choose;
         System.out.println("Nhập lựa chọn của bạn ");
         do {
@@ -154,6 +163,10 @@ public class Main {
                 case "12":
                     studentManager.readStudentHasScholarShip();
                     break;
+                case "13":
+                    showBigMenu();
+                    choice(studentManager,teacherManager );
+                    break;
                 case "0":
                     System.out.println("GOODBYE !!!");
                     break;
@@ -174,6 +187,7 @@ public class Main {
         System.out.println("6. Hiển thị giảng viên có lương cao nhất");
         System.out.println("7. Lưu thông tin giảng viên");
         System.out.println("8. Đọc thông tin giảng viên");
+        System.out.println("9. Quay lại menu chính");
         System.out.println("0. Thoát chương trình");
     }
 
@@ -191,6 +205,7 @@ public class Main {
         System.out.println("10. Lưu thông tin sinh viên");
         System.out.println("11. Đọc thông tin tất cả sinh viên");
         System.out.println("12. Đọc thông tin các sinh viên được học bổng");
+        System.out.println("13. Quay lại menu chính");
         System.out.println("0. Thoát chương trình");
 
     }

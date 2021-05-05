@@ -5,7 +5,6 @@ import java.io.*;
 import java.util.*;
 
 public class StudentManager {
-    Scanner sc = new Scanner(System.in);
     List<Student> studentList = new ArrayList<>();
 
     // Thêm sinh viên
