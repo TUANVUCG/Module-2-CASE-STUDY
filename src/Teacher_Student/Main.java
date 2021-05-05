@@ -153,20 +153,19 @@ public class Main {
                     studentManager.showStudentByName();
                     break;
                 case "9":
-                    studentManager.showStudentHasScholarshipByGPA();// done
-                    break;
-                case "10":
                     studentManager.saveAllStudentInfo();
                     System.out.println("Đã lưu !");
                     break;
-                case "11":
+                case "10":
                     studentManager.readAllStudentInfo();
                     studentManager.showAllStudent();
                     break;
-                case "12":
+                case "11":
+                    System.out.println("Danh sách sinh viên đạt học bổng ");
+                    studentManager.printTitle();
                     studentManager.readStudentHasScholarShip();
                     break;
-                case "13":
+                case "12":
                     showBigMenu();
                     choice(studentManager,teacherManager );
                     break;
@@ -205,11 +204,10 @@ public class Main {
         System.out.println("6. Sắp xếp sinh viên theo điểm trung bình từ thấp đến cao");
         System.out.println("7. Hiển thị sinh viên có điểm trung bình cao nhất và thấp nhất");
         System.out.println("8. Sắp xếp sinh viên theo thứ tự tên từ A->Z");
-        System.out.println("9. Hiển thị các sinh viên có học bổng");
-        System.out.println("10. Lưu thông tin sinh viên");
-        System.out.println("11. Đọc thông tin tất cả sinh viên");
-        System.out.println("12. Đọc thông tin các sinh viên được học bổng");
-        System.out.println("13. Quay lại menu chính");
+        System.out.println("19. Lưu thông tin sinh viên");
+        System.out.println("10. Đọc thông tin tất cả sinh viên");
+        System.out.println("11. Đọc thông tin các sinh viên được học bổng");
+        System.out.println("12. Quay lại menu chính");
         System.out.println("0. Thoát chương trình");
 
     }

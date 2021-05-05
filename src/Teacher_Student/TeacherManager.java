@@ -25,8 +25,9 @@ public class TeacherManager {
         }
     }
 
-    private void printTitle() {
-        System.out.printf("%-25s%-18s%-20s%-17s%-22s%-24s%-25s%-19s%-19s","Họ tên","Giới tính","Ngày sinh","Quê quán","Mã giảng viên","Tên lớp dạy","Lương/giờ","Số giờ dạy","Thực lĩnh");
+    public void printTitle() {
+        System.out.printf("%-25s%-18s%-20s%-17s%-22s%-24s%-25s%-19s%-19s","Họ tên","Giới tính","Ngày sinh","Quê quán",
+                "Mã giảng viên","Tên lớp dạy","Lương/giờ","Số giờ dạy","Thực lĩnh");
         System.out.println("\n");
     }
 

@@ -176,24 +176,6 @@ public class Student extends Person{
         return (theoryMark + (practiceMark * 2)) / 3;
     }
 
-    public boolean inspectScholarship(){
-        boolean isPass = false;
-        double gpa = findGPA();
-        if(gpa>=8.0){
-            if(theoryMark>=7&&practiceMark>=7){
-                isPass = true;
-            }
-        }
-        return isPass;
-    }
-
-    public void passScholarship(){
-        boolean isPass;
-        if(isPass=inspectScholarship()){
-            System.out.println("Đạt học bổng !");
-        }
-        System.out.println("Tiếc quá, cố tẹo nữa thôi !");
-    }
 
     @Override
     public String toString() {

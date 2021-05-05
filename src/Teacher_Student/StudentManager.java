@@ -23,8 +23,9 @@ public class StudentManager {
         }
     }
 
-    private void printTitle() {
-        System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s","Họ tên","Giới tính","Ngày sinh","Quê quán","Mã sinh viên","Email","Số điện thoại","Điểm lý thuyết","Điểm thực hành","Điểm trung bình");
+    public void printTitle() {
+        System.out.printf("%-25s%-18s%-20s%-17s%-35s%-22s%-25s%-27s%-29s%-25s","Họ tên","Giới tính","Ngày sinh","Quê quán",
+                "Mã sinh viên","Email","Số điện thoại","Điểm lý thuyết","Điểm thực hành","Điểm trung bình");
         System.out.println("\n");
     }
 
@@ -33,7 +34,7 @@ public class StudentManager {
         Collections.sort(studentList, new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
-                if (o1.findGPA() > o2.findGPA()) {
+                if (o1.findGPA() < o2.findGPA()) {
                     return 1;
                 }
                 return -1;
@@ -75,20 +76,24 @@ public class StudentManager {
         showAllStudent();
     }
 
+
+
     // Hiển thị tất cả các sinh viên được học bổng, sắp xếp theo điểm từ cao xuống thấp
     // Tìm các sinh viên có học bổng
     public List<Student> findStudentHasScholarship() {
         List<Student> studentHasScholarshipList = new ArrayList<>();
         for (Student student : studentList) {
-            if (student.inspectScholarship()) {
-                studentHasScholarshipList.add(student);
+            if (student.findGPA()>=8) {
+                if(student.getTheoryMark()>=7.5&&student.getPracticeMark()>=7.5){
+                    studentHasScholarshipList.add(student);
+                }
             }
         }
         return studentHasScholarshipList;
     }
 
-    // Hiển thị sinh viên có học bổng theo điểm trung bình
-    public void showStudentHasScholarshipByGPA() {
+    // Sắp xếp sinh viên có học bổng theo điểm trung bình
+    public void sortStudentHasScholarshipByGPA() {
         List<Student> studentHasScholarshipList = findStudentHasScholarship();
         sortStudentByGPA(studentHasScholarshipList);
         printTitle();
@@ -177,7 +182,6 @@ public class StudentManager {
     // Đọc thông tin sinh viên được học bổng
     public void readStudentHasScholarShip() {
         List<Student> studentHasScholarship = read("ScholarShip.txt");;
-        System.out.println("Danh sách sinh viên đạt học bổng");
         for (Student student : studentHasScholarship) {
             student.showStudentInfo();
         }
